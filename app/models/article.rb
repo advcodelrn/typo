@@ -73,8 +73,7 @@ class Article < Content
 
   def merge_with(other)
     self.body += other.body
-    other.comments.each do |comment|
-      comment.article_id = self.id
+    while (comment = other.comments.pop)
       self.comments << comment
     end
     self.save!

@@ -1,6 +1,9 @@
 Given /^the following articles exist$/ do |table|
   # table is a Cucumber::Ast::Table
-  Article.create table.hashes
+  table.hashes.each do |hash|
+    puts hash
+    Article.create hash
+  end
 end
 
 Then /^the article "(.*?)" should have body "(.*?)"$/ do |title, body|
